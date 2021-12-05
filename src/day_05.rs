@@ -48,10 +48,7 @@ fn parse_input() -> Result<Vec<Line>, std::io::Error> {
 			let l = l.unwrap();
 			let parts: Vec<&str> = l.split(" -> ").collect();
 			assert_eq!(parts.len(), 2);
-			let values: Vec<Vec<u64>> = parts
-				.iter()
-				.map(|p| p.split(',').map(|v| v.parse().unwrap()).collect())
-				.collect();
+			let values: Vec<Vec<u64>> = parts.iter().map(|p| p.split(',').map(|v| v.parse().unwrap()).collect()).collect();
 			Line::new(values[0][0], values[0][1], values[1][0], values[1][1])
 		})
 		.collect();
@@ -69,18 +66,12 @@ fn get_intersections(lines: Vec<&Line>) -> u64 {
 		}
 	}
 
-	ocean
-		.iter()
-		.map(|l| l.iter().map(|v| if *v > 1 { 1 } else { 0 }).sum::<u64>())
-		.sum()
+	ocean.iter().map(|l| l.iter().map(|v| if *v > 1 { 1 } else { 0 }).sum::<u64>()).sum()
 }
 
 pub fn run_a() -> Result<u64, std::io::Error> {
 	let lines = parse_input()?;
-	let lines: Vec<&Line> = lines
-		.iter()
-		.filter(|l| l.x_o == l.x_d || l.y_o == l.y_d)
-		.collect();
+	let lines: Vec<&Line> = lines.iter().filter(|l| l.x_o == l.x_d || l.y_o == l.y_d).collect();
 
 	Ok(get_intersections(lines))
 }

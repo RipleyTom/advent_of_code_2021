@@ -15,11 +15,7 @@ struct Submarine {
 
 impl Submarine {
 	fn new() -> Submarine {
-		Submarine {
-			hoz_pos: 0,
-			depth_pos: 0,
-			aim: 0,
-		}
+		Submarine { hoz_pos: 0, depth_pos: 0, aim: 0 }
 	}
 
 	fn apply_directions(&mut self, vec_dirs: &Vec<Direction>) {

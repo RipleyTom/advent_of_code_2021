@@ -4,10 +4,7 @@ use std::io::{BufRead, BufReader};
 fn parse_input() -> Result<Vec<i64>, std::io::Error> {
 	let file = File::open("input_01.txt")?;
 
-	let result: Vec<i64> = BufReader::new(file)
-		.lines()
-		.map(|line| line.unwrap().trim().parse().unwrap())
-		.collect();
+	let result: Vec<i64> = BufReader::new(file).lines().map(|line| line.unwrap().trim().parse().unwrap()).collect();
 
 	Ok(result)
 }

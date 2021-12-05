@@ -109,16 +109,7 @@ fn search_for(v_inp: &Vec<[u64; 12]>, keep_pop: bool) -> u64 {
 			}
 		};
 
-		old_vec = old_vec
-			.iter()
-			.filter_map(|v| {
-				if v[i as usize] == to_keep {
-					Some(*v)
-				} else {
-					None
-				}
-			})
-			.collect();
+		old_vec = old_vec.iter().filter_map(|v| if v[i as usize] == to_keep { Some(*v) } else { None }).collect();
 
 		if old_vec.len() == 1 {
 			break;

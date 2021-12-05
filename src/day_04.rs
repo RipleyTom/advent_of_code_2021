@@ -92,11 +92,7 @@ fn parse_input() -> Result<(Vec<u64>, Vec<BingoTable>), std::io::Error> {
 			continue;
 		}
 
-		let numbers: Vec<u64> = lines[i]
-			.split(' ')
-			.filter(|v| !v.is_empty())
-			.map(|v| v.parse().unwrap())
-			.collect();
+		let numbers: Vec<u64> = lines[i].split(' ').filter(|v| !v.is_empty()).map(|v| v.parse().unwrap()).collect();
 		assert_eq!(numbers.len(), 5);
 
 		for j in 0..5 {
@@ -125,10 +121,7 @@ pub fn run_a() -> Result<u64, std::io::Error> {
 		}
 	}
 
-	Err(std::io::Error::new(
-		std::io::ErrorKind::Other,
-		"Internal error!",
-	))
+	Err(std::io::Error::new(std::io::ErrorKind::Other, "Internal error!"))
 }
 
 pub fn run_b() -> Result<u64, std::io::Error> {
@@ -150,8 +143,5 @@ pub fn run_b() -> Result<u64, std::io::Error> {
 		tables = tables_not_won;
 	}
 
-	Err(std::io::Error::new(
-		std::io::ErrorKind::Other,
-		"Internal error!",
-	))
+	Err(std::io::Error::new(std::io::ErrorKind::Other, "Internal error!"))
 }
