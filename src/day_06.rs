@@ -42,18 +42,38 @@ fn get_num_children(days: i64, timer: i64) -> i64 {
 	num_children
 }
 
+// pub fn run_b() -> Result<u64, std::io::Error> {
+// 	let fishes = parse_input()?;
+// 	let mut num_fishes = fishes.len() as i64;
+// 	let mut vec_threads = Vec::new();
+// 	for fish in &fishes {
+// 		let fish_life = (*fish + 1) as i64;
+// 		vec_threads.push(std::thread::spawn(move || get_num_children(256, fish_life)));
+// 	}
+
+// 	for t in vec_threads {
+// 		num_fishes += t.join().unwrap();
+// 	}
+
+// 	Ok(num_fishes as u64)
+// }
+
 pub fn run_b() -> Result<u64, std::io::Error> {
 	let fishes = parse_input()?;
-	let mut num_fishes = fishes.len() as i64;
-	let mut vec_threads = Vec::new();
+
+	let mut timers = [0; 9];
 	for fish in &fishes {
-		let fish_life = (*fish + 1) as i64;
-		vec_threads.push(std::thread::spawn(move || get_num_children(256, fish_life)));
+		timers[*fish as usize] += 1;
 	}
 
-	for t in vec_threads {
-		num_fishes += t.join().unwrap();
+	for _ in 0..256 {
+		let new_spawns = timers[0];
+		for j in 0..8 {
+			timers[j] = timers[j + 1];
+		}
+		timers[8] = new_spawns;
+		timers[6] += new_spawns;
 	}
 
-	Ok(num_fishes as u64)
+	Ok(timers.iter().sum())
 }
