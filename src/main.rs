@@ -1,10 +1,10 @@
 use std::time::Instant;
 
-mod day_08;
+mod day_09;
 
 fn main() {
 	let now = Instant::now();
-	println!("Result of part A: {:?} in {} μs", day_08::run_a(), now.elapsed().as_micros());
+	println!("Result of part A: {:?} in {} μs", day_09::run_a(), now.elapsed().as_micros());
 	let now = Instant::now();
-	println!("Result of part B: {:?} in {} μs", day_08::run_b(), now.elapsed().as_micros());
+	println!("Result of part B: {:?} in {} μs", day_09::run_b(), now.elapsed().as_micros());
 }
